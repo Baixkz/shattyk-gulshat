@@ -1,13 +1,523 @@
-<!doctype html>
-<html lang="kk"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#f8efe0"><title>Шаттық & Гүлшат — Үйлену тойына шақыру</title>
+
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Шаттық & Гүлшат</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Noto+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
 <style>
-:root{--bg:#fbf4e9;--gold:#ad7833;--deep:#55351e;--muted:#816344}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--deep);font-family:Georgia,'Times New Roman',serif;text-align:center}.page{max-width:520px;margin:auto;overflow:hidden;background:linear-gradient(180deg,#fff8ed,#f8eee0);min-height:100vh;border:1px solid #e8d5b6}.hero{height:430px;background:linear-gradient(0deg,rgba(255,245,227,.98),rgba(255,245,227,0) 48%),url('couple-hands.png') center 30%/cover;position:relative}.orn{color:var(--gold);font-size:28px;padding-top:20px;letter-spacing:8px}.intro{margin:-65px 22px 0;position:relative}.eyebrow{font-size:17px;letter-spacing:3px;color:var(--muted)}h1{font-size:clamp(40px,9vw,58px);font-weight:400;font-style:italic;color:#80551f;margin:12px 0}.sub{font-size:20px;line-height:1.6;margin:18px}.rule{color:var(--gold);letter-spacing:8px;margin:24px 0}.section{padding:18px 24px}.title{font-size:28px;font-style:italic;color:var(--gold);margin:10px}.date{font-size:26px;line-height:1.5}.date strong{font-size:36px;font-weight:400;color:#8e5c24}.count{display:flex;justify-content:center;gap:8px;margin:20px 0}.count div{background:#fff8ef;border:1px solid #e8d3af;border-radius:14px;padding:12px 8px;min-width:66px}.count b{font-size:28px;font-weight:400;display:block}.count span{font-size:14px;color:var(--muted)}.details{border:1px solid #d9b780;border-radius:22px;margin:10px 20px;padding:18px;background:#fff8ef}.details p{font-size:19px;line-height:1.5}.button{display:inline-block;border:0;border-radius:30px;background:linear-gradient(135deg,#b7833b,#8b5d24);color:#fff;padding:14px 26px;font-size:17px;font-family:inherit;text-decoration:none;margin:8px;cursor:pointer}.button.alt{background:transparent;border:1px solid var(--gold);color:var(--deep)}input{font:inherit;font-size:17px;padding:12px;border:1px solid #d8bc92;border-radius:12px;background:#fffaf2;width:100%;margin:7px 0;color:var(--deep)}.note{font-size:18px;line-height:1.6}.foot{padding:28px;color:#9b723d;font-style:italic}.toast{display:none;margin:12px;padding:12px;background:#f0e1c9;border-radius:12px;font-size:16px}
-</style></head><body><main class="page"><div class="hero"><div class="orn">❧ ✧ ❧</div></div><div class="intro"><div class="eyebrow">ҮЙЛЕНУ ТОЙЫНА ШАҚЫРУ</div><h1>Шаттық &amp; Гүлшат</h1><p class="sub">Өміріміздің ең қуанышты сәтін<br>сіздермен бірге атап өткіміз келеді!</p><div class="rule">── ❦ ──</div></div>
-<section class="section"><div class="title">Той салтанаты</div><div class="date"><strong>27 қараша 2027</strong><br>Сағат 18:00</div><div class="count" id="countdown"><div><b>—</b><span>күн</span></div><div><b>—</b><span>сағат</span></div><div><b>—</b><span>минут</span></div><div><b>—</b><span>секунд</span></div></div></section>
-<section class="details"><div class="title">Той мекенжайы</div><p id="venue">Айжарық ресторан</p><a class="button alt" href="https://2gis.kz/aktau/geo/70000001033043787" target="_blank" rel="noopener">2GIS картасынан көру</a></section>
-<section class="section"><div class="title">Той иелері</div><p class="date">Ибайдула &amp; Құралай</p><div class="rule">── ❦ ──</div><p class="note">Сіздердің келулеріңіз біз үшін үлкен қуаныш!</p></section>
-<section class="details"><div class="title">Қатысуыңызды растаңыз</div><p>Тойға келу-келмеуіңізді белгілеуіңізді сұраймыз.</p><input id="guest" placeholder="Атыңыз" aria-label="Атыңыз"><button class="button" onclick="reply(true)">Келемін</button><button class="button alt" onclick="reply(false)">Келе алмаймын</button><div class="toast" id="toast"></div></section>
-<div class="foot">Ізгі тілекпен, Шаттық &amp; Гүлшат ♡</div></main>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #f8faf5;
+  color: #465747;
+  font-family: 'Noto Sans', sans-serif;
+  text-align: center;
+  overflow-x: hidden;
+}
+
+.hero {
+  min-height: 100vh;
+  padding: 45px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background:
+    radial-gradient(circle at center,
+    rgba(198,226,192,.42),
+    transparent 70%),
+    #f8faf5;
+}
+
+.small-title {
+  letter-spacing: 3px;
+  font-size: 14px;
+  margin-bottom: 28px;
+  color: #728a73;
+}
+
+.names {
+  font-family: 'Noto Serif', serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(42px, 10vw, 75px);
+  line-height: 1.5;
+  color: #91b295;
+  text-shadow:
+    0 0 10px rgba(175,215,175,.6),
+    0 0 25px rgba(150,195,150,.3);
+}
+
+.amp {
+  color: #b4a27c;
+  font-family: 'Noto Serif', serif;
+  font-size: 45px;
+  margin: 5px 0;
+}
+
+.line {
+  width: 90px;
+  height: 1px;
+  background: #c2d5bd;
+  margin: 25px auto;
+}
+
+.invitation {
+  font-family: 'Noto Serif', serif;
+  font-size: 23px;
+  line-height: 1.8;
+  max-width: 650px;
+  color: #536653;
+}
+
+.date {
+  font-family: 'Noto Serif', serif;
+  font-size: 27px;
+  color: #83a486;
+  margin: 20px 0;
+}
+
+.hero-image {
+  width: min(90%, 430px);
+  max-height: 430px;
+  object-fit: contain;
+  margin: 20px auto;
+  border-radius: 18px;
+}
+
+.section {
+  padding: 65px 20px;
+}
+
+.section-title {
+  font-family: 'Noto Serif', serif;
+  font-style: italic;
+  font-size: 42px;
+  font-weight: 400;
+  color: #91b295;
+  margin-bottom: 25px;
+  text-shadow: 0 0 12px rgba(160,205,160,.3);
+}
+
+.info {
+  font-size: 20px;
+  line-height: 1.9;
+  color: #536653;
+}
+
+.timer {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 30px;
+}
+
+.time-box {
+  min-width: 75px;
+  padding: 15px 10px;
+  background: #ffffffb8;
+  border: 1px solid #dce8d8;
+  border-radius: 15px;
+  box-shadow: 0 0 18px rgba(140,180,140,.12);
+}
+
+.time-box span {
+  display: block;
+  font-family: 'Noto Serif', serif;
+  font-size: 32px;
+  color: #88a88b;
+}
+
+.time-box small {
+  font-size: 14px;
+  color: #637763;
+}
+
+.button {
+  display: inline-block;
+  text-decoration: none;
+  border: none;
+  padding: 14px 25px;
+  border-radius: 30px;
+  margin: 12px 5px;
+  font-family: 'Noto Sans', sans-serif;
+  font-size: 17px;
+  cursor: pointer;
+  transition: .3s;
+}
+
+.button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 20px rgba(130,180,130,.3);
+}
+
+.green {
+  background: #91b295;
+  color: white;
+}
+
+.light {
+  background: #edf3e9;
+  color: #536653;
+  border: 1px solid #cbdcc7;
+}
+
+input {
+  width: min(100%, 350px);
+  padding: 14px;
+  border: 1px solid #d2dfce;
+  border-radius: 12px;
+  background: #fff;
+  font-family: 'Noto Sans', sans-serif;
+  font-size: 17px;
+  margin: 10px 0;
+  outline: none;
+}
+
+input:focus {
+  box-shadow: 0 0 14px rgba(140,180,140,.3);
+  border-color: #91b295;
+}
+
+.card {
+  max-width: 600px;
+  margin: 25px auto;
+  padding: 30px 20px;
+  background: rgba(255,255,255,.7);
+  border-radius: 25px;
+  border: 1px solid #e0e9dc;
+  box-shadow: 0 5px 30px rgba(70,100,70,.06);
+}
+
+.music-button {
+  position: fixed;
+  right: 15px;
+  bottom: 15px;
+  z-index: 99;
+  border-radius: 50px;
+  background: #91b295;
+  color: white;
+  padding: 13px 18px;
+  border: 1px solid #c3d8c1;
+  box-shadow: 0 0 20px rgba(130,180,130,.25);
+  font-family: 'Noto Sans', sans-serif;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.footer {
+  padding: 40px 20px;
+  font-family: 'Noto Serif', serif;
+  font-style: italic;
+  font-size: 30px;
+  color: #91b295;
+}
+
+@media(max-width:600px) {
+  .invitation {
+    font-size: 19px;
+  }
+
+  .info {
+    font-size: 18px;
+  }
+
+  .section-title {
+    font-size: 36px;
+  }
+
+  .names {
+    font-size: 53px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<section class="hero">
+
+  <div class="small-title">
+    ҚҰРМЕТТІ ҚОНАҚТАР!
+  </div>
+
+  <div class="names">Шаттық</div>
+  <div class="amp">&</div>
+  <div class="names">Гүлшат</div>
+
+  <div class="line"></div>
+
+  <p class="invitation">
+    Сіздерді өміріміздің ең ерекше әрі қуанышты
+    күніне арналған тойымыздың қадірлі қонағы
+    болуға шақырамыз!
+  </p>
+
+  <img src="couple-hands.png"
+       class="hero-image"
+       alt="Шаттық пен Гүлшат">
+
+  <div class="date">
+    27 қараша 2026 жыл
+  </div>
+
+  <p class="info">Сағат 18:00</p>
+
+</section>
+
+<section class="section">
+
+  <div class="section-title">
+    Тойға дейін
+  </div>
+
+  <div class="timer">
+
+    <div class="time-box">
+      <span id="days">0</span>
+      <small>күн</small>
+    </div>
+
+    <div class="time-box">
+      <span id="hours">00</span>
+      <small>сағат</small>
+    </div>
+
+    <div class="time-box">
+      <span id="minutes">00</span>
+      <small>минут</small>
+    </div>
+
+    <div class="time-box">
+      <span id="seconds">00</span>
+      <small>секунд</small>
+    </div>
+
+  </div>
+
+</section>
+
+<section class="section">
+
+  <div class="section-title">
+    Той салтанаты
+  </div>
+
+  <div class="card">
+
+    <div class="info">
+      <p><strong>27 қараша 2026 жыл</strong></p>
+      <p>18:00</p>
+
+      <div class="line"></div>
+
+      <p><strong>Айжарық ресторан</strong></p>
+
+      <a class="button green"
+         href="https://2gis.kz/aktau/geo/70000001033043787"
+         target="_blank">
+         Мекенжайды ашу
+      </a>
+    </div>
+
+  </div>
+
+</section>
+
+<section class="section">
+
+  <div class="section-title">
+    Той иелері
+  </div>
+
+  <div class="info">
+    Ибайдула & Құралай
+  </div>
+
+</section>
+
+<section class="section">
+
+  <div class="section-title">
+    Тойға қатысуыңызды растаңыз
+  </div>
+
+  <div class="card">
+
+    <p class="info">
+      Құрметті қонақ, есіміңізді енгізіп,
+      қатысуыңызды белгілеңіз.
+    </p>
+
+    <input
+      type="text"
+      id="guestName"
+      placeholder="Есіміңізді енгізіңіз">
+
+    <div>
+      <button class="button green"
+              onclick="reply(true)">
+        Келемін
+      </button>
+
+      <button class="button light"
+              onclick="reply(false)">
+        Келе алмаймын
+      </button>
+    </div>
+
+  </div>
+
+</section>
+
+<div class="footer">
+  Сіздерді асыға күтеміз!
+</div>
+
+<button class="music-button" id="musicBtn"
+        onclick="toggleMusic()">
+  ♫ Музыка
+</button>
+
+<audio id="music" loop preload="auto">
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+
 <script>
-const target=new Date('2027-11-27T18:00:00+05:00');function tick(){let d=Math.max(0,target-Date.now()),s=Math.floor(d/1000),days=Math.floor(s/86400),hours=Math.floor(s%86400/3600),mins=Math.floor(s%3600/60),secs=s%60;document.getElementById('countdown').innerHTML=`<div><b>${days}</b><span>күн</span></div><div><b>${hours}</b><span>сағат</span></div><div><b>${mins}</b><span>минут</span></div><div><b>${secs}</b><span>секунд</span></div>`}tick();setInterval(tick,1000);function reply(yes){let n=document.getElementById('guest').value.trim();let t=document.getElementById('toast');t.style.display='block';t.textContent=(n?n+', ':'')+(yes?'Келетініңіз белгіленді!':'Келе алмайтыныңыз белгіленді!')+' WhatsApp арқылы шақыру сілтемесін жібергенде осы жауапты жеке хабарлама ретінде жіберуге болады.'}
-</script></body></html>
+
+// ТАЙМЕР - 27 ҚАРАША 2026, 18:00
+// Қазақстан уақыты UTC+5
+
+const weddingDate =
+  new Date('2026-11-27T18:00:00+05:00').getTime();
+
+function updateTimer() {
+
+  const now = Date.now();
+  const diff = weddingDate - now;
+
+  if (diff <= 0) {
+    document.getElementById('days').textContent = '0';
+    document.getElementById('hours').textContent = '00';
+    document.getElementById('minutes').textContent = '00';
+    document.getElementById('seconds').textContent = '00';
+    return;
+  }
+
+  const days = Math.floor(diff / 86400000);
+  const hours = Math.floor((diff % 86400000) / 3600000);
+  const minutes = Math.floor((diff % 3600000) / 60000);
+  const seconds = Math.floor((diff % 60000) / 1000);
+
+  document.getElementById('days').textContent = days;
+  document.getElementById('hours').textContent =
+    String(hours).padStart(2, '0');
+  document.getElementById('minutes').textContent =
+    String(minutes).padStart(2, '0');
+  document.getElementById('seconds').textContent =
+    String(seconds).padStart(2, '0');
+}
+
+updateTimer();
+setInterval(updateTimer, 1000);
+
+
+// WHATSAPP
+
+function reply(yes) {
+
+  const name = document.getElementById('guestName')
+    .value.trim();
+
+  if (!name) {
+    alert('Есіміңізді енгізіңіз!');
+    document.getElementById('guestName').focus();
+    return;
+  }
+
+  const answer = yes ? 'Келемін' : 'Келе алмаймын';
+
+  const message =
+    'Сәлеметсіздер ме! Мен ' + name +
+    '. Шаттық & Гүлшат тойына: ' + answer +
+    '. 27 қараша 2026 жыл, сағат 18:00. Айжарық ресторан.';
+
+  const url =
+    'https://wa.me/77025306802?text=' +
+    encodeURIComponent(message);
+
+  window.open(url, '_blank');
+}
+
+
+// МУЗЫКА
+
+const music = document.getElementById('music');
+const musicBtn = document.getElementById('musicBtn');
+
+let musicStarted = false;
+
+async function startMusic() {
+
+  if (musicStarted) return;
+
+  try {
+    await music.play();
+    musicStarted = true;
+    musicBtn.textContent = '♫ Музыканы өшіру';
+  } catch (e) {}
+}
+
+function toggleMusic() {
+
+  if (music.paused) {
+    music.play().then(() => {
+      musicStarted = true;
+      musicBtn.textContent = '♫ Музыканы өшіру';
+    }).catch(() => {});
+  } else {
+    music.pause();
+    musicStarted = false;
+    musicBtn.textContent = '♫ Музыканы қосу';
+  }
+}
+
+// Сайт ашылғанда автоматты қосуға әрекет
+
+window.addEventListener('load', startMusic);
+
+// Қонақтың алғашқы әрекетінде қосуға әрекет
+
+['click', 'touchstart', 'scroll', 'keydown']
+.forEach(eventName => {
+  window.addEventListener(eventName, startMusic, {
+    once: true,
+    passive: true
+  });
+});
+
+// Сайттан кеткенде тоқтату
+
+window.addEventListener('pagehide', () => {
+  music.pause();
+});
+
+document.addEventListener('visibilitychange', () => {
+  if (document.hidden) {
+    music.pause();
+  }
+});
+
+</script>
+
+</body>
+</html>

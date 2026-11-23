@@ -35,11 +35,9 @@ body {
   overflow-x: hidden;
 }
 
-button, input { font: inherit; }
+button, input, select { font: inherit; }
 
-/* =========================
-   АШЫЛАТЫН СӘНДІ КОНВЕРТ
-========================= */
+/* АШЫЛАТЫН СӘНДІ КОНВЕРТ */
 
 .envelope-screen {
   position: fixed;
@@ -49,13 +47,12 @@ button, input { font: inherit; }
   align-items: center;
   justify-content: center;
   padding: 20px;
-  background:
-    radial-gradient(ellipse at center, #fffdf7 0%, #f4e7d1 65%, #e4d2b5 100%);
+  background: radial-gradient(ellipse at center, #fffdf7 0%, #f4e7d1 65%, #e4d2b5 100%);
   transition: opacity 1s ease, visibility 1s ease;
   overflow: hidden;
 }
 
-.envelope-screen.closed-screen.hide {
+.envelope-screen.hide {
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
@@ -205,12 +202,9 @@ button, input { font: inherit; }
   font-family: 'Cormorant Garamond', serif;
   font-size: 24px;
   font-weight: 600;
-  background:
-    radial-gradient(circle at 35% 28%, #e5c783, #a87832 60%, #704a20);
+  background: radial-gradient(circle at 35% 28%, #e5c783, #a87832 60%, #704a20);
   border: 3px double #f2dcae;
-  box-shadow:
-    0 0 0 4px rgba(177,138,72,.25),
-    0 5px 15px rgba(83,54,19,.3);
+  box-shadow: 0 0 0 4px rgba(177,138,72,.25), 0 5px 15px rgba(83,54,19,.3);
   transition: opacity .3s, transform .5s;
 }
 
@@ -262,9 +256,7 @@ button, input { font: inherit; }
   letter-spacing: 1px;
 }
 
-/* =========================
-   ЖАРҚЫРАҒАН ҰШҚЫНДАР
-========================= */
+/* ЖАРҚЫРАҒАН ҰШҚЫНДАР */
 
 .sparkle-layer {
   position: fixed;
@@ -291,9 +283,7 @@ button, input { font: inherit; }
   65% { opacity: .35; transform: scale(.8); }
 }
 
-/* =========================
-   НЕГІЗГІ ШАҚЫРУ ДИЗАЙНЫ
-========================= */
+/* НЕГІЗГІ ШАҚЫРУ ДИЗАЙНЫ */
 
 .invitation {
   max-width: 680px;
@@ -311,7 +301,7 @@ button, input { font: inherit; }
   text-align: center;
 }
 
-/* Қазақы оюлар */
+/* ҚАЗАҚЫ ОЮЛАР */
 
 .side-decoration {
   position: absolute;
@@ -352,7 +342,7 @@ button, input { font: inherit; }
   }
 }
 
-/* Бірінші фондық сурет */
+/* БІРІНШІ ФОНДЫҚ СУРЕТ */
 
 .hero {
   position: relative;
@@ -467,7 +457,7 @@ button, input { font: inherit; }
   margin-top: 10px;
 }
 
-/* Кері санақ */
+/* КЕРІ САНАҚ */
 
 .countdown-section {
   padding: 30px 18px 35px;
@@ -521,7 +511,7 @@ button, input { font: inherit; }
   font-size: 12px;
 }
 
-/* Той туралы ақпарат */
+/* ТОЙ ТУРАЛЫ АҚПАРАТ */
 
 .event-background {
   position: relative;
@@ -586,7 +576,7 @@ button, input { font: inherit; }
   box-shadow: 0 7px 18px rgba(150,102,37,.25);
 }
 
-/* Қонақ жауабы */
+/* ҚОНАҚ ЖАУАБЫ */
 
 .rsvp {
   padding: 35px 18px;
@@ -631,6 +621,12 @@ button, input { font: inherit; }
 
 .guest-input:focus { border-color: var(--gold); }
 
+select.guest-input {
+  margin-top: 12px;
+  cursor: pointer;
+  appearance: auto;
+}
+
 .rsvp-buttons {
   display: flex;
   flex-wrap: wrap;
@@ -659,13 +655,21 @@ button, input { font: inherit; }
   border: 1px solid #b99a67;
 }
 
-/* Той иелері және қорытынды */
+/* ТОЙ ИЕЛЕРІ ЖӘНЕ ҚОРЫТЫНДЫ */
 
 .hosts {
   padding: 25px 10px 10px;
   font-family: 'Cormorant Garamond', serif;
   font-size: 27px;
   color: var(--gold);
+}
+
+.hosts-label {
+  display: block;
+  font-family: 'Noto Serif', serif;
+  font-size: 14px;
+  letter-spacing: 2px;
+  margin-bottom: 8px;
 }
 
 .footer {
@@ -676,7 +680,7 @@ button, input { font: inherit; }
   color: var(--gold);
 }
 
-/* Музыка */
+/* МУЗЫКА */
 
 .music-button {
   position: fixed;
@@ -694,7 +698,7 @@ button, input { font: inherit; }
   cursor: pointer;
 }
 
-/* Бөлімдердің біртіндеп көрінуі */
+/* БӨЛІМДЕРДІҢ БІРТІНДЕП КӨРІНУІ */
 
 .reveal {
   opacity: 0;
@@ -707,7 +711,7 @@ button, input { font: inherit; }
   transform: translateY(0);
 }
 
-/* Телефонға бейімдеу */
+/* ТЕЛЕФОНҒА БЕЙІМДЕУ */
 
 @media(max-width:480px) {
   body { padding: 4px; }
@@ -789,7 +793,7 @@ button, input { font: inherit; }
 
 <div class="invitation">
 
-  <!-- Сол жақ ою -->
+  <!-- СОЛ ЖАҚ ОЮ -->
   <div class="side-decoration side-left">
     <svg viewBox="0 0 100 1000" preserveAspectRatio="none"
          fill="none" stroke="#b18a48" stroke-width="3">
@@ -803,7 +807,7 @@ button, input { font: inherit; }
     </svg>
   </div>
 
-  <!-- Оң жақ ою -->
+  <!-- ОҢ ЖАҚ ОЮ -->
   <div class="side-decoration side-right">
     <svg viewBox="0 0 100 1000" preserveAspectRatio="none"
          fill="none" stroke="#b18a48" stroke-width="3">
@@ -819,7 +823,7 @@ button, input { font: inherit; }
 
   <div class="main">
 
-    <!-- Басты бөлім -->
+    <!-- БАСТЫ БӨЛІМ -->
     <section class="hero">
       <div class="hero-content">
         <div class="top-label">ТОЙҒА ШАҚЫРУ</div>
@@ -841,7 +845,7 @@ button, input { font: inherit; }
       </div>
     </section>
 
-    <!-- Кері санақ -->
+    <!-- КЕРІ САНАҚ -->
     <section class="countdown-section reveal">
       <div class="section-heading">Бақытты күнге дейін</div>
 
@@ -872,7 +876,7 @@ button, input { font: inherit; }
       </div>
     </section>
 
-    <!-- Той туралы ақпарат -->
+    <!-- ТОЙ ТУРАЛЫ АҚПАРАТ -->
     <section class="event-background reveal">
       <div class="event-card">
 
@@ -924,7 +928,7 @@ button, input { font: inherit; }
       </div>
     </section>
 
-    <!-- WhatsApp арқылы жауап -->
+    <!-- WHATSAPP АРҚЫЛЫ ЖАУАП -->
     <section class="rsvp reveal">
       <div class="rsvp-card">
 
@@ -943,6 +947,19 @@ button, input { font: inherit; }
           placeholder="Есіміңізді енгізіңіз"
           autocomplete="name">
 
+        <select class="guest-input" id="guestCount">
+          <option value="1">1 адам</option>
+          <option value="2">2 адам</option>
+          <option value="3">3 адам</option>
+          <option value="4">4 адам</option>
+          <option value="5">5 адам</option>
+          <option value="6">6 адам</option>
+          <option value="7">7 адам</option>
+          <option value="8">8 адам</option>
+          <option value="9">9 адам</option>
+          <option value="10">10 адам</option>
+        </select>
+
         <div class="rsvp-buttons">
           <a href="#" onclick="sendRSVP(true);return false;">
             ✓ Келемін
@@ -956,7 +973,10 @@ button, input { font: inherit; }
 
       </div>
 
-      <div class="hosts">Ибайдула & Құралай</div>
+      <div class="hosts">
+        <span class="hosts-label">ТОЙ ИЕЛЕРІ</span>
+        Ибайдула & Құралай
+      </div>
 
       <div class="footer">
         <div class="ornament">❧ ❖ ❧</div>
@@ -978,9 +998,8 @@ button, input { font: inherit; }
 </button>
 
 <script>
-/* =========================
-   КОНВЕРТТІ АШУ
-========================= */
+
+/* КОНВЕРТТІ АШУ */
 
 let invitationOpened = false;
 
@@ -993,7 +1012,6 @@ function openInvitation() {
 
   envelope.classList.add('envelope-open');
 
-  // Қолданушы өзі басқандықтан музыка қосуға әрекет жасаймыз
   playMusic();
 
   setTimeout(() => {
@@ -1006,10 +1024,7 @@ function openInvitation() {
   }, 3000);
 }
 
-/* =========================
-   ЖЕКЕ ЕСІММЕН ШАҚЫРУ
-   Мысал: ?name=Айгүл
-========================= */
+/* ЖЕКЕ ЕСІММЕН ШАҚЫРУ */
 
 const params = new URLSearchParams(window.location.search);
 const guestFromLink = params.get('name');
@@ -1023,9 +1038,7 @@ if (guestFromLink) {
   document.getElementById('guestName').value = safeName;
 }
 
-/* =========================
-   КЕРІ САНАҚ
-========================= */
+/* КЕРІ САНАҚ */
 
 const weddingDate =
   new Date('2026-11-27T18:00:00+05:00').getTime();
@@ -1056,13 +1069,14 @@ function countdown() {
 countdown();
 setInterval(countdown, 1000);
 
-/* =========================
-   WHATSAPP ЖАУАП
-========================= */
+/* WHATSAPP ЖАУАП */
 
 function sendRSVP(coming) {
   const name =
     document.getElementById('guestName').value.trim();
+
+  const count =
+    document.getElementById('guestCount').value;
 
   if (!name) {
     alert('Есіміңізді енгізіңіз!');
@@ -1070,13 +1084,20 @@ function sendRSVP(coming) {
     return;
   }
 
-  const answer = coming ? 'Келемін' : 'Келе алмаймын';
+  let message;
 
-  const message =
-    'Сәлеметсіздер ме! Менің есімім: ' +
-    name +
-    '. Шаттық пен Гүлшаттың тойына: ' +
-    answer + '.';
+  if (coming) {
+    message =
+      'Сәлеметсіздер ме!\n\n' +
+      'Шаттық пен Гүлшаттың тойына келетінімді растаймын.\n\n' +
+      'Есімім: ' + name + '\n' +
+      'Келетін адам саны: ' + count + ' адам.';
+  } else {
+    message =
+      'Сәлеметсіздер ме!\n\n' +
+      'Шаттық пен Гүлшаттың тойына келе алмайтынымды хабарлаймын.\n\n' +
+      'Есімім: ' + name;
+  }
 
   const url =
     'https://wa.me/77025306802?text=' +
@@ -1085,9 +1106,7 @@ function sendRSVP(coming) {
   window.open(url, '_blank');
 }
 
-/* =========================
-   МУЗЫКА
-========================= */
+/* МУЗЫКА */
 
 const music = document.getElementById('music');
 const musicButton = document.getElementById('musicButton');
@@ -1121,9 +1140,7 @@ document.addEventListener('visibilitychange', () => {
   }
 });
 
-/* =========================
-   АЛТЫН ҰШҚЫНДАР
-========================= */
+/* АЛТЫН ҰШҚЫНДАР */
 
 function createSparkles() {
   const layer = document.getElementById('sparkleLayer');
@@ -1134,10 +1151,12 @@ function createSparkles() {
 
     sparkle.style.left = Math.random() * 100 + '%';
     sparkle.style.top = Math.random() * 100 + '%';
+
     sparkle.style.setProperty(
       '--duration',
       (3 + Math.random() * 5) + 's'
     );
+
     sparkle.style.setProperty(
       '--delay',
       (Math.random() * 6) + 's'
@@ -1153,9 +1172,7 @@ function createSparkles() {
 
 createSparkles();
 
-/* =========================
-   БӨЛІМДЕРДІ БІРТІНДЕП КӨРСЕТУ
-========================= */
+/* БӨЛІМДЕРДІ БІРТІНДЕП КӨРСЕТУ */
 
 const revealObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
@@ -1172,8 +1189,10 @@ document.querySelectorAll('.reveal').forEach(section => {
   revealObserver.observe(section);
 });
 
-/* Конверт ашық тұрған кезде беттің артық айналуын тоқтату */
+/* КОНВЕРТ АШЫЛҒАНҒА ДЕЙІН БЕТТІ АЙНАЛДЫРМАУ */
+
 document.body.style.overflow = 'hidden';
+
 </script>
 
 </body>
